@@ -8,7 +8,9 @@ const CommentArea = ({ selectedBook }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getComments();
+    if (selectedBook !== null) {
+      getComments();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedBook]);
 

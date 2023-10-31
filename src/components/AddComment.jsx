@@ -55,19 +55,21 @@ const AddComment = ({ selectedBook, id, update }) => {
   return (
     <Form onSubmit={submitHandler}>
       <Form.Group className="mb-3">
-        <Form.Label>Recensione</Form.Label>
+        <Form.Label htmlFor="recensione">Recensione</Form.Label>
         <Form.Control
           type="text"
           required
           value={comment.comment}
+          id="recensione"
           onChange={(e) => handleInputChange("comment", e.target.value)}
         />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Voto</Form.Label>
+        <Form.Label htmlFor="rate">Voto</Form.Label>
         <Form.Select
           onChange={(e) => handleInputChange("rate", e.target.value)}
           value={comment.rate}
+          id="rate"
         >
           <option>1</option>
           <option>2</option>

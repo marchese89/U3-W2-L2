@@ -6,29 +6,55 @@ import Col from "react-bootstrap/Col";
 import CommentArea from "./CommentArea";
 import { useState } from "react";
 
-const BookList = ({ genre }) => {
+const BookList = ({ genre, setGenre }) => {
   const [search, setSearch] = useState("");
   const [selectedBook, setSelectedBook] = useState(null);
+  const [selectedGenre, setselectedGenre] = useState("fantasy");
 
   return (
     <>
-      <Container className="mb-6 book-list">
-        <Container className="book-list-search flex-grow-1">
-          <Row className="text-center d-flex justify-content-start">
-            <Col className="col-3">
-              <Form.Group className="mb-3">
-                <Form.Label>Ricerca</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={search}
-                  onChange={(e) => {
-                    setSearch(e.target.value);
-                  }}
-                />
-              </Form.Group>
-            </Col>
-          </Row>
-        </Container>
+      <Container className="mb-6 book-list book-list-search">
+        {/* <Container className="book-list-search flex-grow-1"> */}
+        <Row className="text-center d-flex justify-content-start  flex-grow-1">
+          <Col className="col-4">
+            <Form.Group className="mb-3">
+              <Form.Label name="search-label" htmlFor="search">
+                Ricerca
+              </Form.Label>
+              <Form.Control
+                type="text"
+                value={search}
+                name="search"
+                id="search"
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
+              />
+            </Form.Group>
+          </Col>
+          <Col className="col-4">
+            <Form.Label name="search-label" htmlFor="genre">
+              Seleziona genere
+            </Form.Label>
+            <Form.Select
+              onChange={(e) => {
+                const selected = e.target.value;
+                setGenre(selected);
+                setselectedGenre(selected);
+              }}
+              name="genre"
+              id="genre"
+              value={selectedGenre}
+            >
+              <option>fantasy</option>
+              <option>history</option>
+              <option>horror</option>
+              <option>romance</option>
+              <option>scifi</option>
+            </Form.Select>
+          </Col>
+        </Row>
+        {/* </Container> */}
         <Row className="gy-4">
           <Col className="col-8 left">
             <Row className="gy-4">
