@@ -2,6 +2,7 @@ import CommentList from "./CommentsList";
 import AddComment from "./AddComment";
 import Error from "./Error";
 import { useEffect, useState } from "react";
+import { token } from "../token";
 
 const CommentArea = ({ selectedBook }) => {
   const [listOfComments, setlistOfComments] = useState([]);
@@ -20,8 +21,7 @@ const CommentArea = ({ selectedBook }) => {
         "https://striveschool-api.herokuapp.com/api/comments/" + selectedBook,
         {
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTNhNGFkZmY2ZTNkZDAwMTQ5NWU0MzMiLCJpYXQiOjE2OTgzMTkwNzEsImV4cCI6MTY5OTUyODY3MX0.6OiHMcwB71-jL1waCDYllDV5ONJ4nMJocBRyTYVP518",
+            Authorization: `Bearer ${token}`,
           },
         }
       );
